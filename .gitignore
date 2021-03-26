@@ -4,8 +4,8 @@ pred_mask.png
 temp_file_name.jpg
 temp.jpg
 *.h5
-models
 
+Notebooks
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
