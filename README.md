@@ -1,10 +1,3 @@
-## Setup
-
-```
-
-```
-
-
 
 
 <!-- PROJECT SHIELDS -->
@@ -25,10 +18,10 @@
 
 <!-- PROJECT LOGO -->
 <br />
-[![Verisimilitudo Logo][product-logo]]
+
 <p align="center">
   <a href="https://verisimilitudo.herokuapp.com/">
-    <img src="https://github.com/anikashc/verisimilitudo-codecamp/raw/master/media/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://github.com/anikashc/verisimilitudo-codecamp/raw/master/media/logo-gif.gif" alt="Logo" width="200" height="200">
   </a>
 
   <h3 align="center">Verisimilitudo</h3>
@@ -87,14 +80,6 @@ Due to advancements in field of Image processing, identity theft and evidence/im
 2. Finding the exact tampered region of an image through various deep learning techniques.
  
 
-
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
-
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
 ### Built With
@@ -145,7 +130,10 @@ To get a local copy up and running follow these simple example steps.
 
 This video explains how to use the version 1.0 which classifies an image if its fake or real. Let's watch this
 
-[![Verisimilitudo Usage][product-usage]]
+
+https://user-images.githubusercontent.com/42690307/112683165-26f92480-8e97-11eb-899a-c69e2191b4e3.mp4
+
+
 
 <!-- _For more examples, please refer to the [Documentation](https://example.com)_ -->
 
@@ -176,9 +164,10 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+* [Anikash Chakraborty](https://www.linkedin.com/in/anikash-chakraborty/)
+* [Shiva Gupta](https://www.linkedin.com/in/shiva-gupta-1843b6170/)
+* [Divyansh Goel](https://www.linkedin.com/in/divyansh-goel-a0a433166/)
+* Project Link: [https://github.com/anikashc/verisimilitudo-codecamp](https://github.com/anikashc/verisimilitudo-codecamp)
 
 
 
@@ -212,5 +201,5 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 [linkedin-url]: https://www.linkedin.com/in/anikash-chakraborty/
 [product-screenshot]: media/verisimilitudo-home.png
 [product-usage]: media/verisimilitudo-usage.mp4
-[producct-logo]: media/logo-gif.gif
+[product-logo]: media/logo-gif.gif
 
