@@ -165,6 +165,10 @@ The white region represents- Tampering
 
 https://user-images.githubusercontent.com/42690307/112726585-3bdfc180-8f44-11eb-89c5-f4bff4125ee4.mp4
 
+Notebook walkthrough to understand algorithm
+
+https://user-images.githubusercontent.com/42690307/112730427-828ae700-8f57-11eb-9ce1-4ad5b7b6113c.mp4
+
 
 
 <!-- ROADMAP -->
