@@ -37,6 +37,8 @@
   </p>
 </p>
 
+	**If the hosted application shows error, please reload or contact below anyone**
+  
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
@@ -56,8 +58,9 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#issues">Issues</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
@@ -101,7 +104,7 @@ To get a local copy up and running follow these simple example steps.
 
 - [Python 3.7+](https://www.python.org/downloads/)
 - Make a bucket on Amazon AWS S3 and download the keys. Make sure your bucket is public.
-- Create an .env file with the following keys
+- Create an .env file with the following keys. (Team Code Camp- Please contact anyone from below contacts for S3 keys if there is a difficulty in using S3 or if you want to test with S3 without making an AWS account) 
 
   ```
   export S3_BUCKET=<Bucket Name>
@@ -187,6 +190,16 @@ https://user-images.githubusercontent.com/42690307/112730427-828ae700-8f57-11eb-
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 <a href="https://github.com/anikashc/verisimilitudo-codecamp/blob/master/CONTRIBUTING.md">Read our contributing guidelines</a>
 
+<!-- ISSUES -->
+
+## Issues
+
+- After resetting the password if we logout, then it doesn't login with the new credentials. This needs to be looked upon.
+- The compute timing on local machine is slow and hence we can use any cloud service for our model computations which will return a JSON object with image and result. This will also help us to deploy on Heroku with less slug size.
+- Better error handling and unit testing. Eg. error is encountered if without uploading any image, we click predict.
+- Email verification
+- Making it mobile responsive and UI additions.
+
 <!-- LICENSE -->
 
 ## License
@@ -197,7 +210,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-- [Anikash Chakraborty](https://www.linkedin.com/in/anikash-chakraborty/)
+- [Anikash Chakraborty](https://www.linkedin.com/in/anikash-chakraborty/) (mailto: akh.chakraborty11@gmail.com)
 - [Shiva Gupta](https://www.linkedin.com/in/shiva-gupta-1843b6170/)
 - [Divyansh Goel](https://www.linkedin.com/in/divyansh-goel-a0a433166/)
 - Project Link: [https://github.com/anikashc/verisimilitudo-codecamp](https://github.com/anikashc/verisimilitudo-codecamp)
