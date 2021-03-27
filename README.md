@@ -171,10 +171,10 @@ https://user-images.githubusercontent.com/42690307/112726585-3bdfc180-8f44-11eb-
 
 ## Roadmap
 
-- Building the model. We have used tensorflow and keras to train and build the model. We have used git lfs to handle the model.
+- Building the model. We have used tensorflow and keras to train and build the model.
 - Creating the web app for actual usability of our idea and not just a script to watch
 - Finally deploying it to heroku which took us more than a day because of our huge slug size and complexity
-- We are still not able to deploy the application which shows the location in the image with tampering because of our increased slug size which didn't allow us to deploy on Heroku due to the limits but we have our Version 1.0 ready :D
+- We are still not able to deploy the application which shows the location in the image with tampering because of our increased slug size and the limits of Heroku but we have our Version 1.0 ready :D
 
 <!-- CONTRIBUTING -->
 
