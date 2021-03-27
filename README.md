@@ -110,6 +110,18 @@ To get a local copy up and running follow these simple example steps.
   export S3_REGION=<AWS Region>
   export DATABASE_URI= <if you are using any postgresql hosted database then db url>
   ```
+  
+ - Make folder structure of the folder 'models' in the following way after downloading the models from and [here](https://drive.google.com/drive/folders/11TrwXTCvamHU156U2wJIL7pKwsIzmAXn?usp=sharing) and arrange them respectively
+ 
+```
+models
+|--- segmentation
+|    ├── model.json
+|    └── model_for_json.h5
+|     
+|--- model.json
+|--- model_weights.h5
+```
 
 ### Installation
 
