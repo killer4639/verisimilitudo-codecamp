@@ -27,7 +27,7 @@
   <h3 align="center">Verisimilitudo</h3>
 
   <p align="center">
-    An awesome website to detect image tampering. Made with Love from the team challengeCraving for  <a href="https://dare2compete.com/o/code-camp-20-indian-society-for-technical-education-students-chapter-srm-ncr-campus-150657">Code.Camp 2.0</a>
+    An awesome website to detect image tampering. Made with Love by the team challengeCraving for  <a href="https://dare2compete.com/o/code-camp-20-indian-society-for-technical-education-students-chapter-srm-ncr-campus-150657">Code.Camp 2.0</a>
     <br />
     <a href="https://github.com/anikashc/verisimilitudo-codecamp"><strong>Explore the docs »</strong></a>
     <br />
@@ -99,7 +99,6 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
@@ -173,7 +172,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
 * [Img Shields](https://shields.io)
 * [MIT License](https://spdx.org/licenses/MIT.html)
 * [Anfederico](https://github.com/anfederico/flaskex)
