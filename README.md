@@ -199,7 +199,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-- [Anikash Chakraborty](https://www.linkedin.com/in/anikash-chakraborty/) [E-Mail](mailto: akh.chakraborty11@gmail.com)
+- [Anikash Chakraborty](https://www.linkedin.com/in/anikash-chakraborty/) (mailto: akh.chakraborty11@gmail.com)
 - [Shiva Gupta](https://www.linkedin.com/in/shiva-gupta-1843b6170/)
 - [Divyansh Goel](https://www.linkedin.com/in/divyansh-goel-a0a433166/)
 - Project Link: [https://github.com/anikashc/verisimilitudo-codecamp](https://github.com/anikashc/verisimilitudo-codecamp)
