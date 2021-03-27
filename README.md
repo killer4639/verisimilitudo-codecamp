@@ -151,7 +151,9 @@ This video explains how to use the version 2.0 which classifies an image if its 
 
 The white region represents- Tampering
 
-https://user-images.githubusercontent.com/42690307/112683165-26f92480-8e97-11eb-899a-c69e2191b4e3.mp4
+https://user-images.githubusercontent.com/42690307/112726585-3bdfc180-8f44-11eb-89c5-f4bff4125ee4.mp4
+
+
 
 <!-- ROADMAP -->
 
