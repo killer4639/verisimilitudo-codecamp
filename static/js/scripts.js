@@ -64,15 +64,16 @@ $(document).ready(function () {
 
 
 
-  $(document).on("click", "#predict-button", function () {
-    console.log(`working`);
-    // var class_name = JSON.parse(response)["prediction"];
-    // var confidence = JSON.parse(response)["confidence"];
-    // $("#predictions").text(class_name);
-    // $("#confidence").text(confidence);
-    // console.log(class_name);
-    // console.log(confidence);
-  });
+  $(document).ready(
+    function(){
+        $('input:file').change(
+            function(){
+                if ($(this).val()) {
+                    $('button:submit').attr('disabled',false);
+                } 
+            }
+            );
+    });
 
   $(document).on("click", "#save", function () {
     $.post({
