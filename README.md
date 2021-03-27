@@ -75,10 +75,13 @@
 
 [![Verisimilitudo Screenshot][product-screenshot]](https://verisimilitudo.herokuapp.com/)
 
-Due to advancements in field of Image processing, identity theft and evidence/image tampering has become one of the greatest problems. To prevent that, we will try to solve the problem in 2 phases :
+Editing a real-world photo through computer software or mobile applications is one of the easiest things one can do today before sharing the doctored image on one’s social networking sites. Although most people do it for fun, it is suspectable if one concealed an object or changed someone’s face within the image. Before questioning the intention behind the editing operations, we need to first identify how and which part of the image has been manipulated. It therefore demands automatic tools for identifying the intrinsic difference between authentic images and tampered images. [A great survey on this topic](https://www.sciencedirect.com/science/article/abs/pii/S104732031830350X)
+
+To address the issue we try to solve the problem in 2 phases :
 1. Detecting whether image has been tampered with or not. 
 2. Finding the exact tampered region of an image through various deep learning techniques.
- 
+3. Making a real-world usable product out of the model we generated that can be used by anyone. 
+4. This product has scope of being extended to a fully functional product which can be used by security agencies. 
 
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
@@ -106,6 +109,7 @@ To get a local copy up and running follow these simple example steps.
 * [Python 3.7+](https://www.python.org/downloads/)
 * Make a bucket on Amazon AWS S3 and download the keys. Make sure your bucket is public.
 * Create an .env file with the following keys
+
   ```
   export S3_BUCKET=<Bucket Name>
   export S3_SECRET_ACCESS_KEY=<AWSSecretKey>
@@ -141,7 +145,9 @@ To get a local copy up and running follow these simple example steps.
    ```
     If you encounter an issue on your terminal like this 
     KeyError: 'DATABASE_URI'
-    It is because you don't have any  
+    It is because you don't have any  postresql online hosted database. Use the local one as given. Or uncomment it from scripts/tabledef.py
+
+    Images get stored in the assets folder
    ```
 
 
@@ -150,21 +156,21 @@ To get a local copy up and running follow these simple example steps.
 
 This video explains how to use the version 1.0 which classifies an image if its fake or real. Let's watch this
 
+The black region represents- 
+The white region represents-
 
 https://user-images.githubusercontent.com/42690307/112683165-26f92480-8e97-11eb-899a-c69e2191b4e3.mp4
 
-
-
-<!-- _For more examples, please refer to the [Documentation](https://example.com)_ -->
 
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-* Building the model. We have used git lfs to handle the model. 
+* Building the model. We have used tensorflow and keras to train and build the model. We have used git lfs to handle the model. 
 * Creating the web app for actual usability of our idea and not just a script to watch
 * Finally deploying it to heroku which took us more than a day because of our huge slug size and complexity
+* We are still not able to deploy the application which shows the location in the image with tampering because of our increased slug size which didn't allow us to deploy on Heroku due to the limits but we have our Version 1.0 ready :D
 
 
 

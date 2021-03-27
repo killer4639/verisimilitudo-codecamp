@@ -20,9 +20,9 @@ from keras.preprocessing.image import img_to_array
 from keras.preprocessing.image import ImageDataGenerator
 from config import S3_BUCKET, S3_KEY, S3_SECRET, S3_REGION
 from helpers import *
-from testing import *
+from segmentation import *
 from keras.models import model_from_json
-# from keras.optimizers import adam
+
 
 
 
@@ -38,52 +38,29 @@ def get_model():
     loaded_model_json = json_file.read()
     json_file.close()
     model = model_from_json(loaded_model_json)
+
     # load weights into new model
     model.load_weights("models/model_weights.h5")
     print("Loaded model from disk")
-    # epochs = 30
-    # batch_size = 32
-    # init_lr = 1e-4
-    # optimizer = Adam(lr = init_lr, decay = init_lr/epochs)
+
     model.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
-    # model = load_model("models/model.h5")
     print("Model compiled.")
 
 
-# # only for uploading image function to S3. Nothing to do with preprocessing
-# def upload_file(imageFile):
-#     file = imageFile
-#     """
-#         These attributes are also available
-
-#         file.filename               # The actual name of the file
-#         file.content_type
-#         file.content_length
-#         file.mimetype
-
-#     """
-
-#     # if no file name then select a file
-#     if file.filename == "":
-#         return "Please select a file"
-
-#     # D.
-#     if file:
-#         file.filename = secure_filename(file.filename)
-#         output = upload_file_to_s3(file)
-#         return "https://" + S3_BUCKET + ".s3." + S3_REGION + ".amazonaws.com/" + output
-#     else:
-#         return null
-
-
 # preprocessing function. Here is where everything starts
+# converts to error level analysis picture
 def convert_to_ela_image(path, quality):
     temp_filename = "temp_file_name.jpg"
     ela_filename = "temp_ela.png"
     response = requests.get(path)
+
     # s3 se fetch image ko
     image = Image.open(BytesIO(response.content)).convert("RGB")
+
+    # if you want to locally import the image from path then comment above line
+    # Uncomment the below line
+    # img = Image.open(path).convert('RGB')
 
     # saving local
     image.save(temp_filename, "JPEG", quality=quality)
@@ -110,23 +87,19 @@ def prepare_image(image_path, image_size=(128, 128)):
 
 def preprocess_image(image_path, target_size):
 
-    # this step is already happening in ela function
-    # if image.mode!='RGB':
-    #     image = image.convert('RGB')
+
+
     image = prepare_image(image_path, target_size)
     image = image.reshape(-1, 128, 128, 3)
-    # image=img_to_array(image)
-    # image=np.expand_dims(image,axis=0)
+
     return image
 
 
+#loads the model on running
 print("Loading Model...")
 get_model()
 
 
-# Heroku
-# from flask_heroku import Heroku
-# heroku = Heroku(app)
 
 # ======== Routing =========================================================== #
 # -------- Login ------------------------------------------------------------- #
@@ -137,7 +110,7 @@ def login():
     elif session.get("prediction"):
         session.pop("prediction")
         session.pop("confidence")
-        
+        session.pop("imageURL")
     if not session.get("logged_in"):
         form = forms.LoginForm(request.form)
         if request.method == "POST":
@@ -201,17 +174,25 @@ def predict():
             if(os.path.exists('static/assets/temp1.png')):        
                 os.remove('static/assets/temp1.png')
                 print("File Removed!")
-
-
             if "image" not in request.files:
                 return "No image key in request.files"
 
+            #A
             imageFile = request.files["image"]
 
-            # upload to S3 and get the URL
+            # B, upload to S3 and get the URL
             image = upload_file(imageFile)
 
+            # C, prints the s3 path.
             print(image)
+
+            #additionally if you don't want to use s3 then you can simply 
+            # supply the image path like below and comment the above lines A,B,C and
+            # uncomment the below line to get the image path from local. 
+            # Supply the absolute path to this and make changes in convert_to_ela_image
+            # function as given
+
+            # image = '<PATH>'
 
             processed_image = preprocess_image(image, target_size=(128, 128))
 
@@ -220,7 +201,7 @@ def predict():
             y_pred_class = np.argmax(prediction, axis=1)[0]
             class_names = ["fake", "real"]
 
-            #segmented image prediction
+            #segmented image prediction. Gives the areas of masking
             segment_image(image)
 
             print(
@@ -232,13 +213,7 @@ def predict():
             session["confidence"] = float(np.amax(prediction) * 100)
             session["fromPredict"] = True
             session["imageURL"] = image
-            # session["segmentImageURL"] = segmentImage
-            # return json.dumps(
-            #     {
-            #         "prediction": class_names[y_pred_class],
-            #         "confidence": float(np.amax(prediction) * 100),
-            #     }
-            # )
+     
             return redirect(url_for("login"))
     return redirect(url_for("login"))
 
