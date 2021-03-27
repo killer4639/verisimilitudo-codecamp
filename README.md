@@ -196,6 +196,9 @@ Contributions are what make the open source community such an amazing place to b
 
 - After resetting the password if we logout, then it doesn't login with the new credentials. This needs to be looked upon.
 - The compute timing on local machine is slow and hence we can use any cloud service for our model computations which will return a JSON object with image and result. This will also help us to deploy on Heroku with less slug size.
+- Better error handling and unit testing. Eg. error is encountered if without uploading any image, we click predict.
+- Email verification
+- Making it mobile responsive and UI additions.
 
 <!-- LICENSE -->
 
