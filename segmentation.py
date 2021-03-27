@@ -115,6 +115,7 @@ def segment_image(impath):
     mat = np.reshape(img2,(256,256))
     img=Image.fromarray(np.uint8(mat*255),'L')
     global count
+    count=np.random.randint(low=0,high=10000)
     new_path=create_path()
     img.save(new_path)
     return new_path

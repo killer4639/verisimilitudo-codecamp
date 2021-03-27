@@ -7,6 +7,7 @@
       <div class="columns">
         <div class="column is-auto">
           {% if session['prediction'] %}
+          <p class="title is-2">Original Image</p>
           <img src="{{ session['imageURL'] }}" alt="" id="originalImage"><br>
           <button onClick="window.location.reload()">Predict Another</button>
 
@@ -37,8 +38,10 @@
           <p id='confidence'></p>
           {% if session['prediction'] %}
           <p id='predictions'>{{session['prediction']}}</p>
-          <p id='confidence'>{{session['confidence']}}</p>
-          <img src="{{ session['segmentImageURL'] }}" alt="Segment Image" id="segmentImage"><br>
+
+          <p>Tampering region in white</p>
+          <img src="{{ session['segmentImageURL'] }}" alt="Segment Image" id="segmentImage">
+
 
           {% endif %}
 
