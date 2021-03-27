@@ -35,13 +35,16 @@
           <p id='greeting'></p>
           <p id='predictions'></p>
           <p id='confidence'></p>
-
+          <!-- <img src="{{ url_for('static',filename='assets/temp1.png') }}" alt="Segment Image"><br> -->
           {% if session['prediction'] %}
-          <p id='predictions'>{{session['prediction']}}</p>
-          <p id='confidence'>{{session['confidence']}}</p>
-          <img src="{{ session['segmentImageURL'] }}" alt="Segment Image" id="segmentImage"><br>
+            <p id='predictions'>{{session['prediction']}}</p>
+            <p id='confidence'>{{session['confidence']}}</p>
+            
+            <img src="{{ url_for('static',filename='assets/temp1.png') }}" alt="Segment Image"><br>
+            <!-- <img src="{{ session['segmentImageURL'] }}" alt="Segment Image" id="segmentImage"><br> -->
           
           {% endif %}
+          <button onClick="window.location.reload()">Predict Another</button>
 
 
         </div>

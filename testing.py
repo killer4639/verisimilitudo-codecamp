@@ -37,14 +37,16 @@ def dice_coef_loss(y_true, y_pred):
     return 1-dice_coef(y_true, y_pred)
 
 
-def LoadImages(img):
-    arr = np.array(img)
-    return arr.reshape((1, 256, 256, 3))
+# def LoadImages(img):
+#     arr = np.array(img)
+#     return arr.reshape((1, 256, 256, 3))
+def OneImage(impath):
+    return resize(imread(impath), (256, 256, 3))
 
 
 def ELA(img):
     original = img
-    TEMP = 'ela_temp.jpg'
+    TEMP = 'static/assets/ela_temp.jpg'
     scale = 10
     quality = 90
     diff = ""
@@ -70,10 +72,10 @@ def ELA(img):
 
 def convert_to_3_channel(img):
     arr = np.array(img)
-    arr = (arr >= 0.1)*1.0
+    arr = (arr >= 0.14)*1.0
     arr = np.stack([arr, arr, arr], axis=2)
-    print(arr.shape)
-    arr = arr.reshape((256, 256, 3))
+#     print(arr.shape)
+    arr = arr.reshape((1,256, 256, 3))
     return arr
 
 
@@ -85,8 +87,9 @@ def segment_image(impath):
     img = img.resize((_height, _width), Image.ANTIALIAS)
 
     ela_image = ELA(img)
-    ela_image = imread('ela_temp.jpg')
-    img = LoadImages(ela_image)
+    ela_image.save('static/assets/ela_temp.png')
+    # ela_image = imread('ela_temp.jpg')
+    # img = LoadImages(ela_image)
 
 
     json_file = open('models/segmentation/model.json', 'r')
@@ -99,22 +102,29 @@ def segment_image(impath):
                         optimizer='adam', metrics=[dice_coef])
 
 
+    img = OneImage('static/assets/ela_temp.png')
+    img = img.reshape((-1, 256, 256, 3))
+    # print(img.shape)
+    img = tf.convert_to_tensor(img, dtype='float32')
     predicted = loaded_model.predict(img)
-    img = predicted[0]
-    # img = convert_to_3_channel(img)
-    print(img.shape)
-    # img=Image.fromarray(img)
-    
-    # img = Image.fromarray((img * 255).astype(np.uint8))
-    # image=plt.imsave('pred_mask.png', img)
-    # img.reshape(256,256)
-    mat = np.reshape(img,(256,256))
 
-    # Creates PIL image
-    img = Image.fromarray(np.uint8(mat*255) , 'L')
-    img = img.save('temp.jpg')
-    # img=Image.fromarray(np.uint8(mat * 255) , 'L')
-    segmentImage = upload_file(img)
-    return segmentImage
+    img2 = (predicted[0] >= 0.14)*1.0
+    mat = np.reshape(img2,(256,256))
+    img=Image.fromarray(np.uint8(mat*255),'L')
+    if(os.path.exists('static/assets/temp1.png')):        
+        os.remove('static/assets/temp1.png')
+        print("File Removed!")
+    img.save('static/assets/temp1.png')
+    # segmentImage=Image.open(r'assets/temp1.png')
+    # segmentImage = convert_to_3_channel(img2)
+    # segmentImage=segmentImage.reshape((256,256,3))
+    # print(segmentImage.shape)
+    # segmentImage.save('assets/segmented_masked_image.png')
+    # im = Image.fromarray(segmentImage)
+    # im.save('assets/segmented_masked_image.png')
+    # segmentImage = upload_file(segmentImage)
+    # print(img)
+    return img
  
     # cv2.imwrite('pred_mask.png', img)
+# segment_image('assets/Tp_D_CNN_M_N_art00052_arc00030_11853.jpg')

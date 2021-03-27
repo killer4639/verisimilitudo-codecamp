@@ -104,24 +104,45 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 * [Python 3.7+](https://www.python.org/downloads/)
+* Make a bucket on Amazon AWS S3 and download the keys. Make sure your bucket is public.
+* Create an .env file with the following keys
+  ```
+  export S3_BUCKET=<Bucket Name>
+  export S3_SECRET_ACCESS_KEY=<AWSSecretKey>
+  export S3_KEY=<AWSAccessKeyId>
+  export S3_REGION=<AWS Region>
+  export DATABASE_URI= <if you are using any postgresql hosted database then db url>
+  ```
+
 
 
 ### Installation
 
 1. Clone the repo
    ```
-   git clone https://github.com/anikashc/verisimilitudo-codecamp.git
-   cd verisimilitudo-codecamp
+   $ git clone https://github.com/anikashc/verisimilitudo-codecamp.git
+   $ cd verisimilitudo-codecamp
    ```
-2. Install requirements
+2. Activating virtual environment (optional)
    ```
-   pip install -r requirements.txt
+   $ python -m venv venv
+   $ venv\Scripts\activate
    ```
-3. Run Application
+3. Install requirements
    ```
-   python app.py
+   $ pip install -r requirements.txt
+   ```
+4. Run Application
+   ```
+   $ python app.py
    ```
 
+5. Issues while running
+   ```
+    If you encounter an issue on your terminal like this 
+    KeyError: 'DATABASE_URI'
+    It is because you don't have any  
+   ```
 
 
 <!-- USAGE EXAMPLES -->

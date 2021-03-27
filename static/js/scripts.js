@@ -61,34 +61,8 @@ $(document).ready(function () {
     });
   });
 
-  // $(document).on("click", "#name-button", function() {
-  //   $.post({
-  //     type: "POST",
-  //     url: "/hello",
-  //     data: {"name": $("#name-input").val()},
-  //     success(response) {
-  //       var status = JSON.parse(response)["greeting"];
-  //       $("#greeting").text(status);
-  //       console.log(status);
-  //     }
-  //   });
-  // });
 
-  // logic to change for uploading image
 
-  // let base64Image;
-  // $(document).on("change", "#image-selector", function() {
-  //   let reader = new FileReader();
-  //   reader.onload = function(e){
-  //     let dataURL = reader.result;
-  //     $('#selected-image').attr('src', dataURL);
-  //     base64Image=dataURL.replace("data:image/png;base64,","");
-  //     console.log(base64Image);
-  //   }
-  //   reader.readAsDataURL($('#image-selector')[0].files[0]);
-  //   $('#predictions').text("");
-
-  // });
 
   $(document).on("click", "#predict-button", function () {
     console.log(`working`);

@@ -1,9 +1,14 @@
 accounts.db
 ela_temp.jpg
+ela_temp.png
 pred_mask.png
+
 temp_file_name.jpg
-temp.jpg
+
 *.h5
+assets/ela_temp.png
+assets/temp1.png
+
 
 Notebooks
 # Byte-compiled / optimized / DLL files

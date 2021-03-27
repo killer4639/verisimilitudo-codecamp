@@ -137,7 +137,7 @@ def login():
     elif session.get("prediction"):
         session.pop("prediction")
         session.pop("confidence")
-        session.pop("imageURL")
+        
     if not session.get("logged_in"):
         form = forms.LoginForm(request.form)
         if request.method == "POST":
@@ -198,6 +198,10 @@ def signup():
 def predict():
     if session.get("logged_in"):
         if request.method == "POST":
+            if(os.path.exists('static/assets/temp1.png')):        
+                os.remove('static/assets/temp1.png')
+                print("File Removed!")
+
 
             if "image" not in request.files:
                 return "No image key in request.files"
@@ -215,7 +219,10 @@ def predict():
             prediction = model.predict(processed_image)
             y_pred_class = np.argmax(prediction, axis=1)[0]
             class_names = ["fake", "real"]
-            segmentImage=segment_image(image)
+
+            #segmented image prediction
+            segment_image(image)
+
             print(
                 f"Class: {class_names[y_pred_class]} Confidence: {np.amax(prediction) * 100:0.2f}"
             )
@@ -225,7 +232,7 @@ def predict():
             session["confidence"] = float(np.amax(prediction) * 100)
             session["fromPredict"] = True
             session["imageURL"] = image
-            session["segmentImageURL"] = segmentImage
+            # session["segmentImageURL"] = segmentImage
             # return json.dumps(
             #     {
             #         "prediction": class_names[y_pred_class],
