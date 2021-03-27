@@ -58,8 +58,9 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#issues">Issues</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
@@ -188,6 +189,13 @@ https://user-images.githubusercontent.com/42690307/112730427-828ae700-8f57-11eb-
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 <a href="https://github.com/anikashc/verisimilitudo-codecamp/blob/master/CONTRIBUTING.md">Read our contributing guidelines</a>
+
+<!-- ISSUES -->
+
+## Issues
+
+- After resetting the password if we logout, then it doesn't login with the new credentials. This needs to be looked upon.
+- The compute timing on local machine is slow and hence we can use any cloud service for our model computations which will return a JSON object with image and result. This will also help us to deploy on Heroku with less slug size.
 
 <!-- LICENSE -->
 
