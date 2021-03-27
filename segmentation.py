@@ -2,7 +2,6 @@ import keras
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image, ImageChops
-# import cv2
 import tensorflow as tf
 import keras.backend as K
 import os
@@ -15,10 +14,10 @@ from skimage.color import rgb2lab, lab2rgb, rgb2gray, gray2rgb
 from skimage.transform import resize
 from keras.models import model_from_json
 from helpers import *
-# import PIL
 
 
-# impath = 'Tp_D_CNN_M_N_art00052_arc00030_11853.jpg'
+# for testing segmentation locally
+# impath = '<PATH OF IMAGE TO TO TEST>'
 
 _height = 256
 _width = 256
@@ -40,9 +39,6 @@ def dice_coef_loss(y_true, y_pred):
     return 1-dice_coef(y_true, y_pred)
 
 
-# def LoadImages(img):
-#     arr = np.array(img)
-#     return arr.reshape((1, 256, 256, 3))
 def OneImage(impath):
     return resize(imread(impath), (256, 256, 3))
 
@@ -86,7 +82,11 @@ def segment_image(impath):
     response = requests.get(impath)
     # s3 se fetch image ko
     img = Image.open(BytesIO(response.content)).convert("RGB")
+
+    # if you want to locally import the image from path then comment above line
+    # Uncomment the below line
     # img = Image.open(impath).convert('RGB')
+
     img = img.resize((_height, _width), Image.ANTIALIAS)
 
     ela_image = ELA(img)
@@ -107,7 +107,7 @@ def segment_image(impath):
 
     img = OneImage('static/assets/ela_temp.png')
     img = img.reshape((-1, 256, 256, 3))
-    # print(img.shape)
+
     img = tf.convert_to_tensor(img, dtype='float32')
     predicted = loaded_model.predict(img)
 
@@ -117,15 +117,5 @@ def segment_image(impath):
     global count
     new_path=create_path()
     img.save(new_path)
-    # segmentImage=Image.open(r'assets/temp1.png')
-    # segmentImage = convert_to_3_channel(img2)
-    # segmentImage=segmentImage.reshape((256,256,3))
-    # print(segmentImage.shape)
-    # segmentImage.save('assets/segmented_masked_image.png')
-    # im = Image.fromarray(segmentImage)
-    # im.save('assets/segmented_masked_image.png')
-    # segmentImage = upload_file(segmentImage)
-    # print(img)
     return new_path
-    # cv2.imwrite('pred_mask.png', img)
-# segment_image('assets/Tp_D_CNN_M_N_art00052_arc00030_11853.jpg')
+# segment_image('<PATH TO THE IMAGE FILE>')
