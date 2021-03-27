@@ -147,7 +147,7 @@ To get a local copy up and running follow these simple example steps.
 
 ## Usage
 
-This video explains how to use the version 1.0 which classifies an image if its fake or real. Let's watch this
+This video explains how to use the version 2.0 which classifies an image if its fake or real and shows the tampered regions. Let's watch this
 
 The white region represents- Tampering
 

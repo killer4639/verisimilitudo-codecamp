@@ -111,7 +111,8 @@ def login():
     elif session.get("prediction"):
         session.pop("prediction")
         session.pop("confidence")
-        session.pop("imageURL")
+        if session.get("imageURL"):
+            session.pop("imageURL")
         if(os.path.exists(session.get('segmentImageURL'))):        
             os.remove(session.get('segmentImageURL'))
             print("File Removed!")
@@ -136,7 +137,6 @@ def login():
 @app.route("/logout")
 def logout():
     session["logged_in"] = False
-    session.pop("imageURL")
     return redirect(url_for("login"))
 
 
