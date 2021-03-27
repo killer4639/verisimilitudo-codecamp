@@ -29,7 +29,7 @@ from keras.models import model_from_json
 app = Flask(__name__)
 app.secret_key = os.urandom(12)  # Generic key for dev purposes only
 app.config["SECRET_KEY"] = "prettyprinted"
-
+count=1
 # get the model from here. Works fine. No need to touch
 def get_model():
     
@@ -118,7 +118,8 @@ def preprocess_image(image_path, target_size):
     # image=img_to_array(image)
     # image=np.expand_dims(image,axis=0)
     return image
-
+def create_path():
+    return 'assets/temp'+count+'.png'
 
 print("Loading Model...")
 get_model()
@@ -137,6 +138,10 @@ def login():
     elif session.get("prediction"):
         session.pop("prediction")
         session.pop("confidence")
+        session.pop("imageURL")
+        if(os.path.exists(session.get('segmentImageURL'))):        
+            os.remove(session.get('segmentImageURL'))
+            print("File Removed!")
         
     if not session.get("logged_in"):
         form = forms.LoginForm(request.form)
@@ -158,6 +163,7 @@ def login():
 @app.route("/logout")
 def logout():
     session["logged_in"] = False
+    session.pop("imageURL")
     return redirect(url_for("login"))
 
 
@@ -198,10 +204,6 @@ def signup():
 def predict():
     if session.get("logged_in"):
         if request.method == "POST":
-            if(os.path.exists('static/assets/temp1.png')):        
-                os.remove('static/assets/temp1.png')
-                print("File Removed!")
-
 
             if "image" not in request.files:
                 return "No image key in request.files"
@@ -221,7 +223,7 @@ def predict():
             class_names = ["fake", "real"]
 
             #segmented image prediction
-            segment_image(image)
+            new_path=segment_image(image)
 
             print(
                 f"Class: {class_names[y_pred_class]} Confidence: {np.amax(prediction) * 100:0.2f}"
@@ -232,7 +234,7 @@ def predict():
             session["confidence"] = float(np.amax(prediction) * 100)
             session["fromPredict"] = True
             session["imageURL"] = image
-            # session["segmentImageURL"] = segmentImage
+            session["segmentImageURL"] =new_path
             # return json.dumps(
             #     {
             #         "prediction": class_names[y_pred_class],

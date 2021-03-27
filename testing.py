@@ -1,4 +1,5 @@
 import keras
+import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image, ImageChops
 # import cv2
@@ -22,7 +23,9 @@ from helpers import *
 _height = 256
 _width = 256
 
-
+count=np.random.randint(low=0,high=10000)
+def create_path():
+    return 'static/assets/temp'+str(count)+'.png'
 def dice_coef(y_true, y_pred, smooth=1):
     """
     Dice = (2*|X & Y|)/ (|X|+ |Y|)
@@ -111,10 +114,9 @@ def segment_image(impath):
     img2 = (predicted[0] >= 0.14)*1.0
     mat = np.reshape(img2,(256,256))
     img=Image.fromarray(np.uint8(mat*255),'L')
-    if(os.path.exists('static/assets/temp1.png')):        
-        os.remove('static/assets/temp1.png')
-        print("File Removed!")
-    img.save('static/assets/temp1.png')
+    global count
+    new_path=create_path()
+    img.save(new_path)
     # segmentImage=Image.open(r'assets/temp1.png')
     # segmentImage = convert_to_3_channel(img2)
     # segmentImage=segmentImage.reshape((256,256,3))
@@ -124,7 +126,6 @@ def segment_image(impath):
     # im.save('assets/segmented_masked_image.png')
     # segmentImage = upload_file(segmentImage)
     # print(img)
-    return img
- 
+    return new_path
     # cv2.imwrite('pred_mask.png', img)
 # segment_image('assets/Tp_D_CNN_M_N_art00052_arc00030_11853.jpg')
